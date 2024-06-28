@@ -1,57 +1,23 @@
 import pytest
 import requests
 
-def token():
-    email = "g1diplomado01@gmail.com"
-    password = "external123"
-    return login(email, password)
+from config import BASE_URI, EMAIL, PASSWORD
 
-def login(email, password):
-    url = "https://app.todoist.com/api/v9.1/user/login"
+
+def get_response_login():
+    url = f'{BASE_URI}/api/v9.1/user/login'
     payload = {
-        "email": email,
-        "password": password,
-        "device_id": "49880f2c-036a-67ca-18e2-5efb3ffe8286",
-        "permanent_login": True,
-        "pkce_oauth": None,
-        "web_session": True
+        "email": EMAIL,
+        "password": PASSWORD
     }
     headers = {
-        'accept': '*/*',
-        'accept-language': 'es-BO,es-419;q=0.9,es;q=0.8,en;q=0.7',
-        'content-type': 'application/json',
-        'cookie': '_ga=GA1.1.534901237.1718844723; csrf=c10d1382a3404e6e83a5ca73c3c63086; ps_mode=trackingV1; _ga=GA1.3.534901237.1718844723; _gid=GA1.3.545399017.1719419108; _clck=oz1rcq%7C2%7Cfmy%7C0%7C1638; _clsk=1d8bs33%7C1719419698324%7C1%7C1%7Cr.clarity.ms%2Fcollect; _ga_47KPF4T19V=GS1.1.1719419696.1.1.1719419719.0.0.0; _ga_3WJ7YJ0FM2=GS1.1.1719419696.1.1.1719419719.0.0.0; ki_r=aHR0cHM6Ly90b2RvaXN0LmNvbS8%3D; _rdt_uuid=1718844751377.5c9ea80a-6578-4c6d-be03-8b96057858e4; ki_t=1718844755162%3B1719419107997%3B1719423476583%3B4%3B21; todoistd="/CUdA09psYiwY7pwgn9sRGC/RQQ=?"; _ga_M6V9BEQD2J=GS1.1.1719422136.7.1.1719424544.0.0.0; tduser=v4.public.eyJ1c2VyX2lkIjogNDk2OTYzNTIsICJleHAiOiAiMjAyNC0wNy0xMFQxODoyOTozOCswMDowMCJ9F-rxlGeqk1HfAUh6RhSsRTdIXY1Cxij6FF0Pd6budi-8mdi9TaATCT8d-chLEXcyf7Z9EgqQF7oCCW0tQlCsAw; todoistd="qjgiSFpxLw2boMDWXM8hh6y1v1o=?pCHK=gASVJAAAAAAAAACMIGZhODY1ZDFkODM4ZDc0YTYxYTAxMGNiNDA5MDA5YjdklC4=&user_id=gASVBgAAAAAAAABKYE72Ai4="',
-        'doist-locale': 'es-BO',
-        'doist-os': 'Windows',
-        'doist-platform': 'web',
-        'doist-screen': '1920x1040',
-        'doist-version': '6255',
-        'origin': 'https://app.todoist.com',
-        'priority': 'u=1, i',
-        'referer': 'https://app.todoist.com/auth/login',
-        'sec-ch-ua': '"Not/A)Brand";v="8", "Chromium";v="126", "Google Chrome";v="126"',
-        'sec-ch-ua-mobile': '?0',
-        'sec-ch-ua-platform': '"Windows"',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-origin',
-        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36'
+        'doist-platform': 'web'
     }
 
     response = requests.post(url, json=payload, headers=headers)
-    print(f"Request payload: {payload}")
-    print(f"Response status code: {response.status_code}")
-    print(f"Response body: {response.text}")
-
-    if response.status_code == 401:
-        raise Exception("Unauthorized: Check your email and password.")
-    elif response.status_code != 200:
-        raise Exception(f"Error: Received unexpected status code {response.status_code}")
-
-    response.raise_for_status()
-    data = response.json()
-    token = data.get('token', None)
-    if token is None:
-        print(f"Error: Token not found in response: {data}")
-        raise Exception("Authentication failed, token not found.")
+    assert response.status_code ==200
+    return response.json()
+def get_token():
+    response_data = get_response_login()
+    token = response_data.get("token", None)
     return token
