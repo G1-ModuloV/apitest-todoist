@@ -1,5 +1,7 @@
 import pytest
 import requests
+from src.utils.task import get_a_task
+from src.login import get_token
 
 from jsonschema import validate
 
@@ -52,12 +54,13 @@ json_schema = {
     }
 
 def test_get_an_active_task():
-    response = requests.get(url, headers=headers)
+
+    response = get_a_task("8160389085",get_token())
     assert response.status_code == 200
 
 
 def test_get_an_active_task_schema():
-    response = requests.get(url, headers=headers)
+    response = get_a_task("8160389085",get_token())
     assert response.status_code == 200
 
     validate(instance=response.json(), schema=json_schema)
