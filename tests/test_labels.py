@@ -2,38 +2,9 @@ import pytest
 import jsonschema
 from src.login import get_token
 from src.utils.label import get_all_labels
+from src.assertions.labels.get_all_labels_assertions import assert_get_all_labels_case_one
 
 
 def test_get_all_labels():
-    schema = {
-        "type": "array",
-        "items": {
-            "type": "object",
-            "properties": {
-                "id": {
-                    "type": "string"
-                },
-                "name": {
-                    "type": "string"
-                },
-                "order": {
-                    "type": "integer"
-                },
-                "color": {
-                    "type": "string"
-                },
-                "is_favorite": {
-                    "type": "boolean"
-                }
-            },
-            "required": ["id", "name", "order", "color", "is_favorite"]
-        }
-    }
     response = get_all_labels(get_token())
-    response_data = response.json()
-    try:
-        jsonschema.validate(instance=response_data, schema=schema)
-    except jsonschema.exceptions.ValidationError as err:
-        pytest.fail(f"JSON schema dont match {err}")
-    assert response.status_code == 200
-    assert response.headers['Content-Type'] == 'application/json'
+    assert_get_all_labels_case_one(response)
