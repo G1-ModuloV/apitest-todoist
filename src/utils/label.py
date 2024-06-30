@@ -9,6 +9,14 @@ def get_all_labels(token):
     return requests.get(url, headers=headers)
 
 
+def get_a_personal_label(token):
+    url = "https://api.todoist.com/rest/v2/labels/2173775788"
+    headers = {
+        'Authorization': f'Bearer {token}',
+    }
+    return requests.get(url, headers=headers)
+
+ 
 def update_a_label(label_id, label_data, token):
     url = f"https://api.todoist.com/rest/v2/labels/{label_id}"
     headers = {
