@@ -1,5 +1,3 @@
-import pytest
-import jsonschema
 
 from src.login import get_token
 from src.utils.label import get_a_personal_label
