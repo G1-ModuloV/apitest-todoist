@@ -61,3 +61,9 @@ def test_get_a_task_deleted_id():
     response = get_a_task("8164612172", get_token())
     assert_get_a_task_not_found(response)
 
+
+@pytest.mark.functional
+# Verificar que se reciba un error al intentar recuperar una tarea sin especificar un ID nulo/vacio
+def test_get_a_task_null_id():
+    response = get_a_task(None, get_token())
+    assert_get_a_task_bad_request(response)
