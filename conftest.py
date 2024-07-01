@@ -110,6 +110,7 @@ def deleted_task_id():
 def null_task_id():
     return None
 
+
 #Get personal Label
 @pytest.fixture
 def invalid_label_id():
@@ -126,3 +127,45 @@ def valid_query_param_label_id():
 @pytest.fixture
 def deleted_label_id():
     return "2173775788"
+
+#Post Update a Task
+@pytest.fixture
+def valid_task_id_2():
+    return "8162142610"
+
+@pytest.fixture
+def valid_task_id_3():
+    return "8164654097"
+
+@pytest.fixture
+def valid_task_payload1():
+    return "{\"content\": \"Tarea 6 actualizar-100\"}"
+
+@pytest.fixture
+def valid_task_payload2():
+    return "{\"description\": \"actualizando continuamente - 200\"}"
+
+@pytest.fixture
+def valid_task_payload3():
+    return "{\"priority\": 1}"
+
+@pytest.fixture
+def valid_task_payload4():
+    return "{\"labels\": [\"automa_00\",\"test850\"]}"
+
+@pytest.fixture
+def valid_task_payload5():
+    return "{\"due_date\": \"2024-06-29\"}"
+
+@pytest.fixture
+def valid_task_payload6():
+    return "{\"content\": \"8*/*98*9\"}"
+
+@pytest.fixture
+def valid_task_payload7():
+    return "{\"description\": \"//*+6-.'?\"}"
+
+@pytest.fixture
+def valid_task_payload8():
+    return "{\"due_date\": \"1909-06-30\"}"
+
