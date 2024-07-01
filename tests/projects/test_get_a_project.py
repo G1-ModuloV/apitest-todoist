@@ -1,6 +1,6 @@
 import pytest
 import requests
-from src.utils.project import get_a_project, post_a_project_with_id
+from src.utils.project import get_a_project, post_a_project_with_id,get_a_project_with_invalid_url
 from src.assertions.projects.get_a_project_assertions import (
     assert_get_a_project_code_200,
     assert_get_a_project_json,
@@ -55,9 +55,7 @@ def test_get_a_project_nonexistent_id(nonexistent_project_id, valid_token):
 @pytest.mark.regression
 #7 Verificar la respuesta con un formato de URL incorrecto
 def test_get_a_project_invalid_url_format(valid_project_id, valid_token):
-    invalid_url = f"https://api.todoist.com/rest/v2/{valid_project_id}"
-    headers = {"Authorization": f"Bearer {valid_token}"}
-    response = requests.get(invalid_url, headers=headers)
+    response = get_a_project_with_invalid_url(valid_project_id,valid_token)
     assert_get_a_project_code_404(response)
 
 
@@ -85,7 +83,5 @@ def test_get_a_project_post_method(valid_project_id, valid_token):
 @pytest.mark.regression
 #11 Verificar la respuesta cuando la URL del endpoint está mal escrita
 def test_get_a_project_invalid_endpoint(valid_project_id, valid_token):
-    invalid_url = f"https://api.todoist.com/v2/projects/{valid_project_id}"
-    headers = {"Authorization": f"Bearer {valid_token}"}
-    response = requests.get(invalid_url, headers=headers)
+    response = get_a_project_with_invalid_url(valid_project_id, valid_token)
     assert_get_a_project_code_404(response)

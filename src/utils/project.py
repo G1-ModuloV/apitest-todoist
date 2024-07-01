@@ -8,6 +8,12 @@ def get_a_project(token, project_id):
         'Authorization': f'Bearer {token}',
     }
     return requests.get(url, headers=headers)
+def get_a_project_with_invalid_url(token, project_id):
+    url = f'{BASE_URI}/rest/v2/{project_id}'
+    headers = {
+        'Authorization': f'Bearer {token}',
+    }
+    return requests.get(url, headers=headers)
 
 
 def get_all_projects(token):
