@@ -31,6 +31,6 @@ def test_get_a_comment_invalid_id(valid_token, invalid_comment_id):
 
 @pytest.mark.regression
 #Verificar que el request retorna un codigo de error usando el nulo/vacio del comentario
-def test_get_a_comment_null_id(valid_token):
-    response = get_a_comment(valid_token, None)
+def test_get_a_comment_null_id(valid_token, null_comment_id):
+    response = get_a_comment(valid_token, null_comment_id)
     assert_get_a_comment_code_400(response)
