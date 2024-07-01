@@ -9,9 +9,17 @@ def get_a_project(token, project_id):
     }
     return requests.get(url, headers=headers)
 
+
 def get_all_projects(token):
     url = f'{BASE_URI}/rest/v2/projects'
     headers = {
-         'Authorization': f'Bearer {token}',
+        'Authorization': f'Bearer {token}',
     }
     return requests.get(url, headers=headers)
+
+
+def post_a_project_with_id(token, project_id, endpoint="https://api.todoist.com/rest/v2/projects"):
+    headers = {"Authorization": f"Bearer {token}"}
+    url = f"{endpoint}/{project_id}"
+    response = requests.post(url, headers=headers)
+    return response
