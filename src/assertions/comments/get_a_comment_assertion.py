@@ -15,7 +15,6 @@ def assert_get_a_comment_success(response, valid_comment_id):
     response_json = response.json()
     assert response_json['id'] == valid_comment_id
 
-#Verificar que el request retorna un codigo de error usando un id de comentario invalido
 #Verificar que el request retorna un codigo de error usando el nulo/vacio del comentario
 def assert_get_a_comment_code_400(response):
     assert response.status_code == 400
