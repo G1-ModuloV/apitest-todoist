@@ -54,3 +54,26 @@ def null_comment_id():
 def invalid_comment_id():
     return "invalid_comment_id"
 
+
+
+# Get an active task
+@pytest.fixture
+def valid_task_id():
+    return "8160389085"
+
+@pytest.fixture
+def invalid_task_id():
+    return "invalid_task_id"
+
+
+@pytest.fixture
+def non_existent_task_id():
+    return "9999999999"
+
+@pytest.fixture
+def deleted_task_id():
+    return "8164612172"
+
+@pytest.fixture
+def null_task_id():
+    return None
