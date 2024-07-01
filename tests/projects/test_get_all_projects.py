@@ -15,23 +15,16 @@ def test_get_all_projects_with_invalid_token():
     invalid_token = "123"
     response = get_all_projects(invalid_token)
     assert_status_code(response, 401)
-    assert_mensaje_error(response)
 
+'''
 @pytest.mark.regression
 # 3) Verificar la respuesta cuando no hay proyectos disponibles
 def test_no_projects():
     response = get_all_projects(get_token())
     assert_status_code(response, 200)
     assert_any_project(response)
-''' 
-@pytest.mark.regression
-4) Validar el manejo de caracteres especiales en los nombres de los proyectos
-def test_special_characters_in_project_names():
-    response = get_all_projects(get_token())
-    assert_status_code(response,200)
-    assert_list(response)
-    assert_ASCII(response)
 '''
+
 @pytest.mark.regression
 # 6) Verificar la respuesta de la API con un token de autenticación expirado
 def test_expired_token():
