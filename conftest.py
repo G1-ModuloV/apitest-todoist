@@ -109,4 +109,20 @@ def deleted_task_id():
 @pytest.fixture
 def null_task_id():
     return None
-  
+
+#Get personal Label
+@pytest.fixture
+def invalid_label_id():
+    return "invalid_label_id"
+
+@pytest.fixture
+def valid_label_id():
+    return "2173790901"
+
+@pytest.fixture
+def valid_query_param_label_id():
+    return "?id=2173790901"
+
+@pytest.fixture
+def deleted_label_id():
+    return "2173775788"
