@@ -41,23 +41,16 @@ def invalid_token():
 def no_token():
     return None
 
-# Get All Comments
+#Get a Comment
 @pytest.fixture
-def all_comments_valid_project_id():
-    return "2335308589"
+def valid_comment_id():
+    return "3567198885"
 
 @pytest.fixture
-def all_comments_valid_task_id():
-    return "2335320398"
+def null_comment_id():
+    return None
 
 @pytest.fixture
-def all_comments_invalid_id():
-    return "98u234jnfk"
+def invalid_comment_id():
+    return "invalid_comment_id"
 
-@pytest.fixture
-def all_comments_deleted_project_id():
-    return "2335509282"
-
-@pytest.fixture
-def all_comments_deleted_task_id():
-    return "8164848731"
