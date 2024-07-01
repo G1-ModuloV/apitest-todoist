@@ -1,5 +1,3 @@
-import pytest
-import jsonschema
 from src.login import get_token
 from src.utils.label import get_all_labels
 from src.assertions.labels.get_all_labels_assertions import assert_get_all_labels_case_one
