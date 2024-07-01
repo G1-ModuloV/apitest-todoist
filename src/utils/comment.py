@@ -1,4 +1,5 @@
 import requests
+from config import BASE_URI
 
 
 def get_all_comments(token):
@@ -9,8 +10,8 @@ def get_all_comments(token):
     return requests.get(url, headers=headers)
 
 
-def get_comment(token):
-    url = "https://api.todoist.com/rest/v2/comments/3567198885"
+def get_a_comment(token, comment_id):
+    url = f'{BASE_URI}/rest/v2/comments/{comment_id}'
     headers = {
         'Authorization': f'Bearer {token}',
     }
