@@ -17,28 +17,33 @@ def test_update_a_label_correct_payload(payload):
     assert_update_a_label_case_one(response, label_data)
 
 
+@pytest.mark.regression
 def test_update_a_label_incorrect_id():
     response = update_a_label(incorrect_label_id, json.dumps(label_data), get_token())
     assert_update_a_label_not_found(response)
 
 
+@pytest.mark.regression
 def test_update_a_label_name_already_exists():
     response = update_a_label(label_id, json.dumps(label_data2), get_token())
     assert_update_a_label_name_already_exists(response)
 
 
+@pytest.mark.regression
 @pytest.mark.parametrize("payload", bad_payload)
 def test_update_a_label_bad_payload(payload):
     response = update_a_label(label_id, json.dumps(payload), get_token())
     assert_update_a_label_empty_payload(response)
 
 
+@pytest.mark.regression
 @pytest.mark.parametrize("payload", bad_argument)
 def test_update_a_label_bad_argument_value(payload):
     response = update_a_label(label_id, json.dumps(payload), get_token())
     assert_update_a_label_invalid_argument_value(response)
 
 
+@pytest.mark.regression
 @pytest.mark.parametrize("payload", bad_color)
 def test_update_a_label_bad_color_format(payload):
     response = update_a_label(label_id, json.dumps(payload), get_token())
