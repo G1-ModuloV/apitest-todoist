@@ -1,5 +1,5 @@
 import requests
-from config import URI
+from config import BASE_URI
 
 
 def get_all_comments(token):
@@ -11,7 +11,7 @@ def get_all_comments(token):
 
 
 def get_a_comment(token, comment_id):
-    url = f'{URI}/{comment_id}'
+    url = f'{BASE_URI}/rest/v2/comments/{comment_id}'
     headers = {
         'Authorization': f'Bearer {token}',
     }
