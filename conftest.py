@@ -40,3 +40,17 @@ def invalid_token():
 @pytest.fixture
 def no_token():
     return None
+
+#Get a Comment
+@pytest.fixture
+def valid_comment_id():
+    return "3567198885"
+
+@pytest.fixture
+def null_comment_id():
+    return None
+
+@pytest.fixture
+def invalid_comment_id():
+    return "invalid_comment_id"
+
