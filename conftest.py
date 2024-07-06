@@ -28,7 +28,7 @@ def alphanumeric_project_id():
     return "abc123xyz"
 
 
-@pytest.fixture
+@pytest.fixture(scope="session")
 def valid_token():
     return get_token()
 
