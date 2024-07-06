@@ -25,3 +25,8 @@ def get_valid_label_id(valid_token):
     yield label_id
     teardown()
     return label_id
+
+
+@pytest.fixture
+def nonexistent_label_id():
+    return "2173775788"
