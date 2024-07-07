@@ -197,3 +197,8 @@ def nonexistent_section_id():
 @pytest.fixture(scope="session")
 def expired_token():
     return "2a0369b3b4434f82c8d39a6bcc8ca462d7624990"
+
+
+@pytest.fixture
+def valid_id_section():
+    return "6VgqRGMJFv7Qrv2J"
