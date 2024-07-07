@@ -7,6 +7,7 @@ from src.assertions.tasks.post_create_task_assertions import (
     assert_create_task_unauthorized
 )
 
+
 @pytest.mark.smoke
 @pytest.mark.regression
 # TD-15 Verificar que una tarea pueda ser creada con todos los parámetros obligatorios.
@@ -15,6 +16,7 @@ def test_create_task_with_mandatory_fields(valid_task_data_mandatory_field, vali
     assert_create_task_successful(response)
     task_id = response.json()['id']
     delete_task(task_id, valid_token)
+
 
 @pytest.mark.smoke
 @pytest.mark.regression
@@ -36,6 +38,7 @@ def test_create_task_response_format(valid_task_data_mandatory_field, valid_toke
     task_id = response.json()['id']
     delete_task(task_id, valid_token)
 
+
 @pytest.mark.regression
 # TD-15 Verificar que no se pueda crear una tarea sin el parámetro obligatorio "content".
 def test_create_task_without_mandatory_param(incomplete_task_data, valid_token):
@@ -43,13 +46,11 @@ def test_create_task_without_mandatory_param(incomplete_task_data, valid_token):
     assert_create_task_bad_request(response)
 
 
-
 @pytest.mark.regression
 # TD-15 Verificar que no se pueda crear una tarea con un token de autorización inválido
 def test_create_task_with_invalid_token(valid_task_data_optional_fields, invalid_token):
     response = create_task(valid_task_data_optional_fields, invalid_token)
     assert_create_task_unauthorized(response)
-
 
 
 @pytest.mark.regression

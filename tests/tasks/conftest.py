@@ -1,6 +1,7 @@
 import pytest
 from src.utils.task import create_task, delete_task
 
+
 @pytest.fixture(scope="session")
 def valid_task_data_mandatory_field():
     return {
