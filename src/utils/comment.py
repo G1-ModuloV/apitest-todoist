@@ -24,10 +24,18 @@ def get_all_comments_from_project(token, project_id):
     }
     return requests.get(url, headers=headers)
 
-def update_a_comment(token, comment_id, comment_data):
+def create_a_comment(token, comment_body):
+    url = f'{BASE_URI}/rest/v2/comments'
+    headers = {
+        'Authorization': f'Bearer {token}',
+        'Content-Type': 'application/json'
+    }
+    return requests.post(url, headers=headers, data=comment_body)
+
+def delete_comment(token, comment_id):
     url = f"{BASE_URI}/rest/v2/comments/{comment_id}"
     headers = {
-        'Content-Type': 'application/json',
         'Authorization': f'Bearer {token}',
+        'Content-Type': 'application/json'
     }
-    return requests.post(url, headers=headers, data=comment_data)
+    return requests.delete(url, headers=headers)
