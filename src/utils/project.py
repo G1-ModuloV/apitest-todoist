@@ -8,6 +8,8 @@ def get_a_project(token, project_id):
         'Authorization': f'Bearer {token}',
     }
     return requests.get(url, headers=headers)
+
+
 def get_a_project_with_invalid_url(token, project_id):
     url = f'{BASE_URI}/rest/v2/{project_id}'
     headers = {
@@ -28,6 +30,14 @@ def post_a_project_with_id(token, project_id, endpoint="https://api.todoist.com/
     headers = {"Authorization": f"Bearer {token}"}
     url = f"{endpoint}/{project_id}"
     response = requests.post(url, headers=headers)
+    return response
+
+
+def post_a_project(token, data):
+    url = f"{BASE_URI}/rest/v2/projects/"
+    headers = {"Authorization": f"Bearer {token}"}
+
+    response = requests.post(url, headers=headers, json=data)
     return response
 
 
