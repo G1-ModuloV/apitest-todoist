@@ -8,7 +8,7 @@ from src.login import get_token
 
 @pytest.mark.smoke
 @pytest.mark.regression
-#TD-24 Crea una etiqueta con un nombre valido
+# TD-24 Crea una etiqueta con un nombre valido
 def test_create_a_personal_label_valid_name():
     response = create_a_personal_label(json.dumps(label_name), get_token())
     assert_post_create_a_personal_label_name_valid (response)
@@ -16,11 +16,9 @@ def test_create_a_personal_label_valid_name():
     delete_a_label(label_id, get_token())
 
 
-
-
 @pytest.mark.smoke
 @pytest.mark.regression
-#TD-24 Crea una etiqueta con nombre y datos opcionales
+# TD-24 Crea una etiqueta con nombre y datos opcionales
 def test_create_a_personal_label_all_valid():
    response = create_a_personal_label(json.dumps(label_data), get_token())
    assert_post_create_a_personal_label_name_valid(response)
@@ -28,11 +26,9 @@ def test_create_a_personal_label_all_valid():
    delete_a_label(label_id, get_token())
 
 
-
-
 @pytest.mark.smoke
 @pytest.mark.regression
-#TD-24 Crea una etiqueta con un nombre y marcado como favorito
+# TD-24 Crea una etiqueta con un nombre y marcado como favorito
 def test_create_a_personal_label_isFavorite():
    response = create_a_personal_label(json.dumps(label_data2), get_token())
    assert_post_create_a_personal_label_name_valid(response)

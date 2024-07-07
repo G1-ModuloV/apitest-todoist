@@ -34,6 +34,7 @@ def delete_a_label(label_id, token):
     }
     return requests.delete(url, headers=headers)
 
+
 def create_a_personal_label(label_data, token):
     url = f'{BASE_URI}/rest/v2/labels/'
     headers = {
