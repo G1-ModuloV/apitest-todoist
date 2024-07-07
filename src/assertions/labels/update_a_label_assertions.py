@@ -8,7 +8,8 @@ def assert_update_a_label_case_one(response, label_data):
     response_data = response.json()
     assert response.status_code == 200
     assert response.headers['Content-Type'] == 'application/json'
-    assert response_data["name"] == label_data["name"]
+    for key in label_data.keys():
+        assert response_data[key] == label_data[key]
 
 
 def assert_update_a_label_name_already_exists(response):
