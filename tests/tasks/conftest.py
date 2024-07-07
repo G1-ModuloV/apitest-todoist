@@ -40,7 +40,7 @@ def setup_create_task(valid_task_data_mandatory_field, valid_token):
     yield task_id
     teardown()
 
-@pytest.fixture(scope="seccion")
+@pytest.fixture(scope="session")
 def get_valid_tasks_id(valid_token):
     url = f"{BASE_URI}/rest/v2/tasks"
     headers = {
