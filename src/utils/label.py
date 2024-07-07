@@ -33,3 +33,12 @@ def delete_a_label(label_id, token):
         'Authorization': f'Bearer {token}',
     }
     return requests.delete(url, headers=headers)
+
+
+def create_a_personal_label(label_data, token):
+    url = f'{BASE_URI}/rest/v2/labels/'
+    headers = {
+        'Content-Type': 'application/json',
+        'Authorization': f'Bearer {token}',
+    }
+    return requests.post(url, headers=headers, data=label_data)
