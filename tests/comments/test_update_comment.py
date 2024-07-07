@@ -9,7 +9,6 @@ from src.assertions.comments.update_a_comment_assertions import (assert_updated_
 # TD-11 Verificar que se actualice un comentario con id valido mandando datos correctos
 def test_update_comment(setup_teardown_update_comment, valid_token):
     comment_id = setup_teardown_update_comment
-    print("asdasd", comment_id)
     response = update_a_comment(valid_token, comment_id, json.dumps(data_comment_update))
     assert_updated_comment_values_success(response)
 
@@ -17,7 +16,6 @@ def test_update_comment(setup_teardown_update_comment, valid_token):
 # TD-11 Verificar que no se pueda actualizar un comentario dando un token de autorizacion invalido  SMOKE
 def test_update_comment_with_invalid_token(setup_teardown_update_comment, invalid_token):
     comment_id = setup_teardown_update_comment
-    print("asdasd", comment_id)
     response = update_a_comment(invalid_token, comment_id, json.dumps(data_comment_update))
     assert_update_comment_unauthorized(response)
 
@@ -26,6 +24,5 @@ def test_update_comment_with_invalid_token(setup_teardown_update_comment, invali
 # TD-11 Verificar que no se pueda actualizar un comentario sin dar un token de autorizacion  SMOKE
 def test_update_comment_without_token(setup_teardown_update_comment, no_token):
     comment_id = setup_teardown_update_comment
-    print("asdasd", comment_id)
     response = update_a_comment(no_token, comment_id, json.dumps(data_comment_update))
     assert_update_comment_unauthorized(response)
