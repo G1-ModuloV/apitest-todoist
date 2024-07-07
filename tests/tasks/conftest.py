@@ -26,7 +26,7 @@ def incomplete_task_data():
 
 
 @pytest.fixture(scope="session")
-def setup_and_teardown_create_task(valid_task_data_mandatory_field, valid_token):
+def setup_create_task(valid_task_data_mandatory_field, valid_token):
     # Setup: Crea una tarea de prueba
     response = create_task(valid_task_data_mandatory_field, valid_token)
     task_id = response.json()['id']
