@@ -13,3 +13,8 @@ data_new = {
     }
 
 data_vacia = {}
+
+new_name = {"name": "New project"}
+new_color = {"color": "red"}
+new_favorite = {"color": "yellow", "is_favorite": False}
+new_style = {"view_style": "board"}
