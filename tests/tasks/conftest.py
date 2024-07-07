@@ -1,17 +1,17 @@
 import pytest
 from src.utils.task import create_task, delete_task
 
-@pytest.fixture
+@pytest.fixture(scope="session")
 def valid_task_data_mandatory_field():
     return {
-        "content": "New Task"
+        "content": "Nueva tarea 1"
     }
 
 
 @pytest.fixture
 def valid_task_data_optional_fields():
     return {
-        "content": "New Task",
+        "content": "New Task holaaa",
         "description": "Description of the new task",
         "due_date": "2024-07-10"
     }
@@ -35,6 +35,4 @@ def setup_and_teardown_create_task(valid_task_data_mandatory_field, valid_token)
         delete_task(task_id, valid_token)
 
     yield task_id
-
-    # Teardown: Elimina la tarea de prueba
     teardown()
