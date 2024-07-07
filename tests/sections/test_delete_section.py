@@ -49,6 +49,7 @@ def test_delete_section_with_expired_token(valid_project_id, setup_create_a_sect
 
 
 @pytest.mark.smoke
+@pytest.mark.regression
 # TD-48 Verificar respuesta sin token de autorización
 def test_delete_section_without_token(no_token, valid_project_id):
     response = delete_a_section(no_token, valid_project_id)
