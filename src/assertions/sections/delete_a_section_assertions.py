@@ -14,6 +14,3 @@ def assert_section_exists(section_id, token):
     assert response.status_code == 200
     assert response.json().get("id") == section_id
 
-
-def assert_error_message(response, expected_status_code):
-    assert response.status_code == expected_status_code
