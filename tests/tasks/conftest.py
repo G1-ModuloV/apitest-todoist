@@ -3,6 +3,7 @@ import requests
 import json
 from config import BASE_URI
 from src.utils.task import create_task, delete_task
+from src.resources.payloads.reopen_a_task_data import data_reopen_task_create
 
 
 @pytest.fixture(scope="session")
@@ -60,3 +61,23 @@ def get_valid_tasks_id(valid_token):
 
     yield task_id
     teardown()
+
+@pytest.fixture(scope="session")
+def setup_reopen_task(valid_task_data_mandatory_field, valid_token):
+    # Setup
+    # Create task
+    response = create_task(data_reopen_task_create, valid_token)
+    task_id = response.json()['id']
+
+    # Close task
+    url = f"{BASE_URI}/rest/v2/tasks/{task_id}/close"
+    headers = {
+        'Authorization': f'Bearer {valid_token}',
+    }
+    requests.post(url, headers=headers)
+
+    yield task_id
+
+    # teardown
+    #delete task
+    delete_task(task_id, valid_token)
