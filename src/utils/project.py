@@ -48,3 +48,11 @@ def update_a_project(project_id_update, project_data, token):
         'Authorization': f'Bearer {token}',
     }
     return requests.post(url, headers=headers, data=project_data)
+
+
+def delete_a_project(token, project_id):
+    url = f"{BASE_URI}/rest/v2/projects/{project_id}"
+    headers = {
+        'Authorization': f'Bearer {token}'
+    }
+    return requests.delete(url, headers=headers)

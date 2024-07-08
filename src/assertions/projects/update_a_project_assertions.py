@@ -1,8 +1,8 @@
 from src.resources.payloads.update_a_project_data import new_color, new_name, new_favorite, new_style, data_origin
 
 
-def assert_status_code(response, aux):
-    assert response.status_code == aux
+def assert_status_code(response, expected_status):
+    assert response.status_code == expected_status
 
 
 def assert_cambio_de_parametros(response):
