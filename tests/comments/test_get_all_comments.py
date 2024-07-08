@@ -7,12 +7,14 @@ from src.assertions.comments.get_all_comments_assertions import (assert_get_all_
                                                                  assert_get_all_comments_unauthorized)
 
 @pytest.mark.smoke
+@pytest.mark.regression
 # TD-12 Verificar que se obtengan todos los comentarios de una tarea dando un id de tarea válido
 def test_get_all_comments_from_task(valid_token, all_comments_valid_task_id):
     response = get_all_comments_from_task(valid_token, all_comments_valid_task_id)
     assert_get_all_comments_of_task_success(response)
 
 @pytest.mark.smoke
+@pytest.mark.regression
 # TD-12 Verificar que se obtengan todos los comentarios de un proyecto dando un id de proyecto válido
 def test_get_all_comments_from_project(valid_token, all_comments_valid_project_id):
     response = get_all_comments_from_project(valid_token, all_comments_valid_project_id)
