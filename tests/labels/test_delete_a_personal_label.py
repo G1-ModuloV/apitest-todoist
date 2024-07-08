@@ -2,8 +2,9 @@ import pytest
 from src.utils.label import delete_a_label
 from src.assertions.labels.delete_a_label_assertions import assert_delete_a_label_successfully, \
     assert_delete_a_label_forbidden
-from config import BASE_URI
 import requests
+
+from src.utils.url import label_url
 
 
 @pytest.mark.smoke
@@ -39,5 +40,5 @@ def test_delete_a_label_bad_id(nonexistent_label_id, valid_token):
 @pytest.mark.regression
 # TD-45 Verificar la eliminación de una etiqueta con un id valido y ningun tipo de autenticación
 def test_delete_a_label_without_authorization(get_valid_label_id):
-    response = requests.delete(f"{BASE_URI}/rest/v2/labels/{get_valid_label_id}", headers={})
+    response = requests.delete(label_url(get_valid_label_id), headers={})
     assert_delete_a_label_forbidden(response)
