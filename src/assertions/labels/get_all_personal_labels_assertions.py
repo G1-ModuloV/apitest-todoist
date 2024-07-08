@@ -1,5 +1,6 @@
 from src.utils.json_reader import read_a_json
 from src.assertions.schema_assertion import assert_schema
+from src.assertions.common_assertions import assert_empty_body
 
 
 def assert_get_all_labels_case_one(response):
@@ -10,9 +11,7 @@ def assert_get_all_labels_case_one(response):
 
 
 def assert_get_all_labels_forbidden(response):
-    assert response.status_code == 401
-    assert response.headers['Content-Type'] == 'text/plain; charset=utf-8'
-    assert response.content == b'Forbidden'
+    assert_empty_body(response, 401, 'text/plain; charset=utf-8', b'Forbidden')
 
 
 def assert_get_all_labels_invalid_format(response):

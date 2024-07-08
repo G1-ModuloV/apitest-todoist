@@ -1,10 +1,9 @@
 import json
 import pytest
 from src.utils.label import update_a_label
-from src.resources.payloads.update_label_data import label_id, incorrect_label_id, label_data, label_data2, \
-    correct_payload, bad_payload, \
-    bad_argument, bad_color
-from src.assertions.labels.update_a_label_assertions import assert_update_a_label_case_one, \
+from src.resources.payloads.update_a_personal_label_data import label_id, incorrect_label_id, label_data, label_data2, \
+    correct_payload, bad_payload, bad_argument, bad_color
+from src.assertions.labels.update_a_personal_label_assertions import assert_update_a_label_case_one, \
     assert_update_a_label_not_found, assert_update_a_label_name_already_exists, assert_update_a_label_empty_payload, \
     assert_update_a_label_invalid_argument_value, assert_update_a_label_color_format_not_valid
 
