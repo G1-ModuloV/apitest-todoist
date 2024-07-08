@@ -1,3 +1,4 @@
+from src.todoist_api.response_content_type import ResponseContentType
 from src.utils.json_reader import read_a_json
 from src.assertions.schema_assertion import assert_schema
 from src.assertions.common_assertions import assert_empty_body
@@ -30,8 +31,8 @@ def assert_update_a_label_color_format_not_valid(response):
 
 
 def assert_update_a_label_not_found(response):
-    assert_empty_body(response, 404, 'text/plain; charset=utf-8', b'Label not found')
+    assert_empty_body(response, 404, ResponseContentType.TEXT_PLAIN.value, b'Label not found')
 
 
 def assert_bad_request(response, content):
-    assert_empty_body(response, 400, 'text/plain; charset=utf-8', content)
+    assert_empty_body(response, 400, ResponseContentType.TEXT_PLAIN.value, content)
