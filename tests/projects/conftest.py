@@ -1,7 +1,7 @@
 import pytest
 import json
 from src.login import get_token
-from src.utils.project import update_a_project, post_a_project, delete_a_project, get_a_project
+from src.utils.project import update_a_project, post_a_project, delete_a_project
 from src.resources.payloads.create_a_project_data import get_project_data
 from src.resources.payloads.update_a_project_data import project_id_update, data_origin
 
@@ -20,16 +20,22 @@ def setup_update_a_project():
 
 
 @pytest.fixture(scope="function")
-def setup_create_project(valid_token):
-    data = get_project_data("valid_name")
-    response = post_a_project(valid_token, data)
-    project_id = response.json()["id"]
+def setup_create_project(valid_token, request):
+    def create_project_with_data(data_key):
+        data = get_project_data(data_key)
+        response = post_a_project(valid_token, data)
+        if response.status_code == 403:
+            pytest.skip("Maximum number of projects")
+        project_id = response.json()["id"]
 
-    #def teardown():
-    #delete_a_project(valid_token, project_id)
+        def teardown():
+            delete_a_project(valid_token, project_id)
 
-    #yield response
-    #teardown()
+        request.addfinalizer(teardown)
+
+        return response, project_id
+
+    return create_project_with_data
 
 
 @pytest.fixture(scope="function")
