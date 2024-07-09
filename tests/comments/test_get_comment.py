@@ -1,5 +1,3 @@
-
-from src.login import get_token
 import pytest
 from src.utils.comment import get_a_comment
 from src.assertions.comments.get_a_comment_assertion import assert_get_a_comment_success, \
@@ -18,6 +16,7 @@ def test_get_a_comment_token_nul(valid_comment_id, no_token):
     assert_get_a_comment_code_401(response)
 
 @pytest.mark.smoke
+@pytest.mark.regression
 #TD-16 Verificar que el request retorna un comentario especifico usando el id valido del comentario
 def test_a_comment(valid_token, valid_comment_id):
     response = get_a_comment(valid_token, valid_comment_id)

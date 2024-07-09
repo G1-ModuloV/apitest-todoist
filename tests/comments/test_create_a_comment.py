@@ -8,6 +8,7 @@ from src.resources.payloads.create_comment_data import comment_body
 
 
 @pytest.mark.smoke
+@pytest.mark.regression
 #TD-14 Verificar que el request retorna crea un comentario valido
 def test_create_a_comment(valid_token, setup_and_teardown_create_comment):
     commentID = setup_and_teardown_create_comment
@@ -15,6 +16,7 @@ def test_create_a_comment(valid_token, setup_and_teardown_create_comment):
     assert_get_a_comment_success(response, commentID)
 
 @pytest.mark.smoke
+@pytest.mark.regression
 #TD-14 Verificar que el request retorna un codigo de error usando un codigo de autenticación invalido
 def test_create_a_comment_invalid_token(invalid_token):
     # commentID = setup_and_teardown_create_comment
