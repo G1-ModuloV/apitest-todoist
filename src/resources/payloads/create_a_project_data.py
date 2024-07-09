@@ -1,7 +1,7 @@
 project_data = {
     "valid_name": {"name": "Test Project"},
     "missing_name": {},
-    "with_parent_id": {"name": "Test Project", "parent_id": "some_valid_parent_id"},
+    "with_parent_id": {"name": "Test Project", "parent_id": "2335308589"},
     "with_color": {"name": "Test Project", "color": "red"},
     "with_is_favorite": {"name": "Test Project", "is_favorite": True},
     "with_view_style": {"name": "Test Project", "view_style": "board"}

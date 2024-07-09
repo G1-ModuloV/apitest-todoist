@@ -1,5 +1,6 @@
 import requests
 from config import BASE_URI
+from src.resources.payloads.create_a_project_data import get_project_data
 
 
 def get_a_project(token, project_id):
@@ -26,10 +27,36 @@ def get_all_projects(token):
     return requests.get(url, headers=headers)
 
 
-def post_a_project_with_id(token, project_id, endpoint="https://api.todoist.com/rest/v2/projects"):
+def post_a_project_with_id(token, project_id):
     headers = {"Authorization": f"Bearer {token}"}
-    url = f"{endpoint}/{project_id}"
+    url = f"{BASE_URI}/rest/v2/projects/{project_id}"
     response = requests.post(url, headers=headers)
+    return response
+
+
+def post_a_project_with_using_get(token, project_id):
+    headers = {"Authorization": f"Bearer {token}"}
+    url = f"{BASE_URI}/rest/v2/projects/{project_id}"
+    response = requests.get(url, headers=headers)
+    return response
+
+
+def post_a_project_with_wrong_content_type(token, project_id):
+    data = get_project_data("valid_name")
+    headers = {
+        "Authorization": f"Bearer {token}",
+        "Content-Type": "text/plain"
+    }
+    url = f"{BASE_URI}/rest/v2/projects/{project_id}"
+    response = requests.post(url, headers=headers, data=data)
+    return response
+
+
+def post_a_project_with_data_invalid(token, project_id):
+    data = "invalid_body_format"
+    headers = {"Authorization": f"Bearer {token}"}
+    url = f"{BASE_URI}/rest/v2/projects/{project_id}"
+    response = requests.post(url, headers=headers, data=data)
     return response
 
 
