@@ -2,7 +2,7 @@ import pytest
 from src.utils.task import (close_a_task)
 from src.login import get_token
 from src.assertions.schema_assertion import assert_schema
-from src.assertions.tasks.post_close_a_task_assertions import (
+from src.assertions.tasks.close_a_task_assertions import (
     assert_post_close_task_success,
     assert_post_close_task_bad_request,
     assert_post_task_not_found,
