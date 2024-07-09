@@ -32,7 +32,7 @@ def create_a_comment(token, comment_body):
     }
     return requests.post(url, headers=headers, data=comment_body)
 
-def delete_a_comment(token, comment_id):
+def delete_comment(token, comment_id):
     url = f"{BASE_URI}/rest/v2/comments/{comment_id}"
     headers = {
         'Authorization': f'Bearer {token}',

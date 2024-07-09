@@ -6,6 +6,7 @@ from src.assertions.comments.update_a_comment_assertions import (assert_updated_
                                                                  assert_update_comment_unauthorized)
 
 @pytest.mark.smoke
+@pytest.mark.regression
 # TD-11 Verificar que se actualice un comentario con id valido mandando datos correctos
 def test_update_comment(setup_teardown_update_comment, valid_token):
     comment_id = setup_teardown_update_comment
@@ -13,6 +14,7 @@ def test_update_comment(setup_teardown_update_comment, valid_token):
     assert_updated_comment_values_success(response)
 
 @pytest.mark.smoke
+@pytest.mark.regression
 # TD-11 Verificar que no se pueda actualizar un comentario dando un token de autorizacion invalido  SMOKE
 def test_update_comment_with_invalid_token(setup_teardown_update_comment, invalid_token):
     comment_id = setup_teardown_update_comment
@@ -21,6 +23,7 @@ def test_update_comment_with_invalid_token(setup_teardown_update_comment, invali
 
 
 @pytest.mark.smoke
+@pytest.mark.regression
 # TD-11 Verificar que no se pueda actualizar un comentario sin dar un token de autorizacion  SMOKE
 def test_update_comment_without_token(setup_teardown_update_comment, no_token):
     comment_id = setup_teardown_update_comment

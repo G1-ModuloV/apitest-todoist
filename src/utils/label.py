@@ -42,3 +42,20 @@ def create_a_personal_label(label_data, token):
         'Authorization': f'Bearer {token}',
     }
     return requests.post(url, headers=headers, data=label_data)
+
+
+def get_all_shared_labels(token, auth_type="Bearer"):
+    url = f"{BASE_URI}/rest/v2/labels/shared"
+    headers = {
+        'Authorization': f'{auth_type} {token}',
+    }
+    return requests.get(url, headers=headers)
+
+
+def rename_share_labels(label_data, token, content_type="application/json"):
+    url = f"{BASE_URI}/rest/v2/labels/shared/rename"
+    headers = {
+        'Content-Type': content_type,
+        'Authorization': f'Bearer {token}',
+    }
+    return requests.post(url, headers=headers, data=label_data)
