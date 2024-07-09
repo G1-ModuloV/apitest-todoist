@@ -1,6 +1,6 @@
 import pytest
 from src.utils.label import delete_a_label
-from src.assertions.labels.delete_a_label_assertions import assert_delete_a_label_successfully, \
+from src.assertions.labels.delete_a_personal_label_assertions import assert_delete_a_label_successfully, \
     assert_delete_a_label_forbidden
 import requests
 

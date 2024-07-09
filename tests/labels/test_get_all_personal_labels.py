@@ -1,7 +1,7 @@
 import requests
 import pytest
 from src.utils.label import get_all_labels
-from src.assertions.labels.get_all_labels_assertions import assert_get_all_labels_case_one, \
+from src.assertions.labels.get_all_personal_labels_assertions import assert_get_all_labels_case_one, \
     assert_get_all_labels_forbidden, assert_get_all_labels_invalid_format
 from config import BASE_URI
 
