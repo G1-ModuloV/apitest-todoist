@@ -4,6 +4,7 @@ import json
 from config import BASE_URI
 from src.utils.task import create_task, delete_task
 from src.resources.payloads.reopen_a_task_data import data_reopen_task_create
+from src.utils.task import create_task, delete_task, close_a_task
 
 
 @pytest.fixture(scope="session")
@@ -41,6 +42,7 @@ def setup_create_task(valid_task_data_mandatory_field, valid_token):
     yield task_id
     teardown()
 
+
 @pytest.fixture(scope="session")
 def get_valid_tasks_id(valid_token):
     url = f"{BASE_URI}/rest/v2/tasks"
@@ -49,18 +51,18 @@ def get_valid_tasks_id(valid_token):
         'Content-Type': 'application/json',
     }
     payload = {
-        "content": "prueba1"
+        "content": "Tarea 10"
     }
     response = requests.post(url, headers=headers, data=json.dumps(payload))
     response_data = response.json()
-    task_id = response_data["8182857413"]
+    task_id = response_data["id"]
 
     def teardown():
-        delete_url = f"{BASE_URI}/rest/v2/tasks/{task_id}"
-        delete_response = requests.delete(delete_url, headers=headers)
+        close_a_task(task_id, valid_token)
 
     yield task_id
     teardown()
+
 
 @pytest.fixture(scope="session")
 def setup_reopen_task(valid_task_data_mandatory_field, valid_token):
@@ -81,3 +83,9 @@ def setup_reopen_task(valid_task_data_mandatory_field, valid_token):
     # teardown
     #delete task
     delete_task(task_id, valid_token)
+    return task_id
+
+
+@pytest.fixture
+def not_exit_task_id():
+    return "8185293742"

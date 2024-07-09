@@ -199,6 +199,18 @@ def expired_token():
     return "2a0369b3b4434f82c8d39a6bcc8ca462d7624990"
 
 
+#Get Active Tasks
 @pytest.fixture
 def valid_id_section():
     return "6VgqRGMJFv7Qrv2J"
+
+
+#Post Close a Task
+@pytest.fixture
+def invalid_id_close_task():
+    return "0123456789"
+
+
+@pytest.fixture
+def valid_id_open_task():
+    return "8185117205"

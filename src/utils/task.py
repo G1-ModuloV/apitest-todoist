@@ -56,9 +56,20 @@ def update_a_task(task_id, payload, token):
   }
   return requests.request("POST", url, headers=headers, data=payload)
 
+
 def reopen_a_task(task_id, token):
   url = f"{BASE_URI}/rest/v2/tasks/{task_id}/reopen"
   headers = {
     'Authorization': f'Bearer {token}',
   }
   return requests.post(url, headers=headers)
+
+
+def close_a_task(token, task_id):
+    url = f"{BASE_URI}/rest/v2/tasks/{task_id}/close"
+    headers = {
+        'Authorization': f'Bearer {token}',
+    }
+    return requests.request("POST", url, headers=headers)
+
+
