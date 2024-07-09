@@ -6,3 +6,16 @@ def assert_post_create_a_personal_label_name_valid(response):
     assert_schema(response, schema)
     assert response.status_code == 200
     assert response.headers['Content-Type'] == 'application/json'
+
+
+
+def assert_post_create_a_personal_label_invalid_token(response):
+    assert response.status_code == 401
+
+
+def assert_post_create_a_personal_label_invalid_data(response):
+    assert response.status_code == 400
+
+
+def assert_get_create_a_personal_label (response):
+    assert response.status_code == 403

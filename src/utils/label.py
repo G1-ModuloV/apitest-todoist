@@ -59,3 +59,31 @@ def rename_share_labels(label_data, token, content_type="application/json"):
         'Authorization': f'Bearer {token}',
     }
     return requests.post(url, headers=headers, data=label_data)
+
+
+def remove_a_shared_label(label_data, token, content_type="application/json"):
+    url = f'{BASE_URI}/rest/v2/labels/shared/remove'
+    headers = {
+        'Content-Type': content_type,
+        'Authorization': f'Bearer {token}',
+    }
+    return requests.post(url, headers=headers, data=label_data)
+
+
+def get_remove_a_shared_label(label_data, token):
+    url = f'{BASE_URI}/rest/v2/labels/shared/remove'
+    headers = {
+        'Content-Type': 'application/json',
+        'Authorization': f'Bearer {token}',
+    }
+    return requests.get(url, headers=headers, data=label_data)
+
+
+def get_create_a_personal_label(label_data, token):
+    url = f'{BASE_URI}/rest/v2/labels/'
+    headers = {
+        'Content-Type': 'application/json',
+        'Authorization': f'Bearer {token}',
+    }
+    return requests.get(url, headers=headers, data=label_data)
+
