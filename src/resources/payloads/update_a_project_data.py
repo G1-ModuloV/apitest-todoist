@@ -1,7 +1,7 @@
-project_id_update = "2335372779"
+project_id_update = "2335308589"
 data_origin = {
-        "name": "Prueba original",
-        "color": "blue",
+        "name": "Educación 📚",
+        "color": "charcoal",
         "is_favorite": True,
         "view_style": "list"
     }
