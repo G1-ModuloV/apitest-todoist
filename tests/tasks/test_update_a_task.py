@@ -9,6 +9,7 @@ from src.resources.payloads.update_a_task_data import new_content, new_descripti
 
 
 @pytest.mark.smoke
+@pytest.mark.regresion
 # TD-18 Verificar que se pueda actualizar las etiquetas de una de una tarea -Funcional Smoke
 def test_post_positive4(valid_token, setup_update_task):
     response = update_a_task(setup_update_task, json.dumps(new_labels), valid_token)
@@ -16,6 +17,7 @@ def test_post_positive4(valid_token, setup_update_task):
 
 
 @pytest.mark.smoke
+@pytest.mark.regresion
 # TD-18 Verificar que no pueda actualizar la fecha de vencimiento de una tarea ingresando una fecha anterior a la fecha actual - Funcional Smoke
 def test_post_negative3(valid_token, setup_update_task):
     response = update_a_task(setup_update_task, json.dumps(error_due_date), valid_token)
