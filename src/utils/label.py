@@ -64,7 +64,7 @@ def rename_share_labels(label_data, token, content_type="application/json"):
 
 
 def remove_a_shared_label(label_data, token, content_type="application/json"):
-    url = f'{BASE_URI}/rest/v2/labels/shared/remove'
+    url = f'{BASE_URI}{Endpoint.REMOVE_SHARED_LABELS.value}'
     headers = {
         'Content-Type': content_type,
         'Authorization': f'Bearer {token}',
@@ -73,7 +73,7 @@ def remove_a_shared_label(label_data, token, content_type="application/json"):
 
 
 def get_remove_a_shared_label(label_data, token):
-    url = f'{BASE_URI}/rest/v2/labels/shared/remove'
+    url = f'{BASE_URI}{Endpoint.REMOVE_SHARED_LABELS.value}'
     headers = {
         'Content-Type': 'application/json',
         'Authorization': f'Bearer {token}',
@@ -82,10 +82,18 @@ def get_remove_a_shared_label(label_data, token):
 
 
 def get_create_a_personal_label(label_data, token):
-    url = f'{BASE_URI}/rest/v2/labels/'
+    url = f'{BASE_URI}{Endpoint.LABELS.value}'
     headers = {
         'Content-Type': 'application/json',
         'Authorization': f'Bearer {token}',
     }
     return requests.get(url, headers=headers, data=label_data)
 
+
+def create_a_personal_label_incorrect_header(label_data, token):
+    url = f'{BASE_URI}{Endpoint.LABELS.value}'
+    headers = {
+        'Content-Type': 'application/xml',
+        'Authorization': f'Bearer {token}',
+    }
+    return TodoistRequest.post(url, headers, label_data)
