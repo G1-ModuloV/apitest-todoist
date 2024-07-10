@@ -9,12 +9,14 @@ def assert_get_personal_label_valid_case(response):
 def assert_get_personal_label_case_invalid_token(response):
     assert response.status_code == 401
 
+
 def assert_get_personal_label_case_correct_date(response, label_id):
     schema = read_a_json("personal_label_schema.json")
     assert_schema(response, schema)
     assert response.headers['Content-Type'] == 'application/json'
     response_json = response.json()
     assert response_json['id'] == label_id
+
 
 def assert_get_personal_label_case_not_found(response):
     assert response.status_code == 404
