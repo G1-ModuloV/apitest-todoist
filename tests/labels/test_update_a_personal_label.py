@@ -1,7 +1,7 @@
 import json
 import pytest
 from src.utils.label import update_a_label
-from src.resources.payloads.update_a_personal_label_data import label_id, incorrect_label_id, label_data, label_data2, \
+from src.resources.payloads.update_a_personal_label_data import incorrect_label_id, label_data, label_data2, \
     correct_payload, bad_payload, bad_argument, bad_color
 from src.assertions.labels.update_a_personal_label_assertions import assert_update_a_label_case_one, \
     assert_update_a_label_not_found, assert_update_a_label_name_already_exists, assert_update_a_label_empty_payload, \
@@ -16,8 +16,8 @@ from src.assertions.labels.update_a_personal_label_assertions import assert_upda
 # TD-26 Validar la actualización de una etiqueta solamente con el atributo "color"
 # TD-26 Validar la actualización de una etiqueta solamente con el atributo "is_favorite"
 # TD-26 Validar la actualización de una etiqueta con todos los atributos
-def test_update_a_label_correct_payload(payload, valid_token):
-    response = update_a_label(label_id, json.dumps(payload), valid_token)
+def test_update_a_label_correct_payload(payload, valid_token, setup_create_a_label):
+    response = update_a_label(setup_create_a_label, json.dumps(payload), valid_token)
     assert_update_a_label_case_one(response, payload)
 
 
@@ -30,8 +30,8 @@ def test_update_a_label_incorrect_id(valid_token):
 
 @pytest.mark.regression
 # TD-26 Validar la no actualización de una etiqueta con un nombre que ya tiene otra etiqueta
-def test_update_a_label_name_already_exists(valid_token):
-    response = update_a_label(label_id, json.dumps(label_data2), valid_token)
+def test_update_a_label_name_already_exists(valid_token, setup_create_a_label, setup_create_an_extra_label):
+    response = update_a_label(setup_create_a_label, json.dumps(label_data2), valid_token)
     assert_update_a_label_name_already_exists(response)
 
 
@@ -40,8 +40,8 @@ def test_update_a_label_name_already_exists(valid_token):
 # TD-26 Validar la no actualización de una etiqueta con información vacía
 # TD-26 Validar la no actualización de una etiqueta solamente con el atributo "order" con valor False
 # TD-26 Validar la no actualización de una etiqueta solamente con el atributo "is_favorite" con valor False
-def test_update_a_label_bad_payload(payload, valid_token):
-    response = update_a_label(label_id, json.dumps(payload), valid_token)
+def test_update_a_label_bad_payload(payload, valid_token, setup_create_a_label):
+    response = update_a_label(setup_create_a_label, json.dumps(payload), valid_token)
     assert_update_a_label_empty_payload(response)
 
 
@@ -50,8 +50,8 @@ def test_update_a_label_bad_payload(payload, valid_token):
 # TD-26 Validar la no actualización de una etiqueta solamente con el atributo "name" con valor booleano
 # TD-26 Validar la no actualización de una etiqueta solamente con el atributo "name" con valor numérico
 # TD-26 Validar la no actualización de una etiqueta solamente con el atributo "order" con valor string
-def test_update_a_label_bad_argument_value(payload, valid_token):
-    response = update_a_label(label_id, json.dumps(payload), valid_token)
+def test_update_a_label_bad_argument_value(payload, valid_token, setup_create_a_label):
+    response = update_a_label(setup_create_a_label, json.dumps(payload), valid_token)
     assert_update_a_label_invalid_argument_value(response)
 
 
@@ -60,6 +60,6 @@ def test_update_a_label_bad_argument_value(payload, valid_token):
 # TD-26 Validar la no actualización de una etiqueta solamente con el atributo "color" con valor True
 # TD-26 Validar la no actualización de una etiqueta solamente con el atributo "color" con valor numérico
 # TD-26 Validar la no actualización de una etiqueta solamente con el atributo "color" con valor que no existe
-def test_update_a_label_bad_color_format(payload, valid_token):
-    response = update_a_label(label_id, json.dumps(payload), valid_token)
+def test_update_a_label_bad_color_format(payload, valid_token, setup_create_a_label):
+    response = update_a_label(setup_create_a_label, json.dumps(payload), valid_token)
     assert_update_a_label_color_format_not_valid(response)
