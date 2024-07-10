@@ -15,7 +15,7 @@ def valid_task_data_mandatory_field():
     }
 
 
-@pytest.fixture
+@pytest.fixture(scope="session")
 def valid_task_data_optional_fields():
     return {
         "content": "Tarea con campos opcionales",
@@ -86,3 +86,15 @@ def setup_reopen_task(valid_task_data_mandatory_field, valid_token):
     #delete task
     delete_task(task_id, valid_token)
     return task_id
+
+
+@pytest.fixture(scope="session")
+def setup_create_delete_task_optional_fields(valid_task_data_optional_fields, valid_token):
+    response = create_task(valid_task_data_optional_fields, valid_token)
+    task_id = response.json()['id']
+
+    def teardown():
+        delete_task(task_id, valid_token)
+
+    yield task_id
+    teardown()
