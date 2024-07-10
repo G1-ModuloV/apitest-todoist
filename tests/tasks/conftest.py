@@ -3,6 +3,7 @@ import requests
 import json
 from config import BASE_URI
 from src.resources.payloads.reopen_a_task_data import data_reopen_task_create
+from src.resources.payloads.update_a_task_data import data_origin
 from src.resources.payloads.close_a_task_data import data_close_task_creation
 from src.utils.task import create_task, delete_task, close_a_task, update_a_task
 
@@ -50,6 +51,7 @@ def setup_close_a_task(valid_task_data_mandatory_field, valid_token):
     task_id = response.json()['id']
     #close a task
     close_a_task(valid_token, task_id)
+
     # delete a task
     def teardown():
         delete_task(task_id, valid_token)
@@ -63,6 +65,21 @@ def nonexistent_task_id():
     return "2587410360"
 
 
+@pytest.fixture(scope="session")
+def setup_update_task(valid_token):
+    # Create a task
+    response = create_task(data_origin, valid_token)
+    response_data = response.json()
+    task_id = response_data["id"]
+    print(task_id)
+
+    #delete a task
+    def teardown():
+        delete_task(task_id, valid_token)
+
+    yield task_id
+    teardown()
+    return task_id
 
 
 @pytest.fixture(scope="session")
