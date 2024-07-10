@@ -1,0 +1,69 @@
+{
+  "title": "Generated schema for Root",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "assigner_id": {},
+    "assignee_id": {},
+    "project_id": {
+      "type": "string"
+    },
+    "section_id": {},
+    "parent_id": {},
+    "order": {
+      "type": "number"
+    },
+    "content": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "is_completed": {
+      "type": "boolean"
+    },
+    "labels": {
+      "type": "array",
+      "items": {}
+    },
+    "priority": {
+      "type": "number"
+    },
+    "comment_count": {
+      "type": "number"
+    },
+    "creator_id": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "due": {},
+    "url": {
+      "type": "string"
+    },
+    "duration": {}
+  },
+  "required": [
+    "id",
+    "assigner_id",
+    "assignee_id",
+    "project_id",
+    "section_id",
+    "parent_id",
+    "order",
+    "content",
+    "description",
+    "is_completed",
+    "labels",
+    "priority",
+    "comment_count",
+    "creator_id",
+    "created_at",
+    "due",
+    "url",
+    "duration"
+  ]
+}

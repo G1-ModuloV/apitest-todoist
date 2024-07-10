@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "array",
+  "items": [
+      {
+          "type": "object",
+          "properties": {
+              "id": {
+                  "type": "string"
+              },
+              "task_id": {
+                  "type": "string"
+              },
+              "project_id": {
+                  "type": "null"
+              },
+              "content": {
+                  "type": "string"
+              },
+              "posted_at": {
+                  "type": "string"
+              },
+              "attachment": {
+                  "type": "null"
+              }
+          },
+          "required": [
+              "id",
+              "task_id",
+              "project_id",
+              "content",
+              "posted_at",
+              "attachment"
+          ]
+      }
+  ]
+}
