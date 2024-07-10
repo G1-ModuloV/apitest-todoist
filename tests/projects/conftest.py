@@ -6,19 +6,6 @@ from src.resources.payloads.create_a_project_data import get_project_data
 from src.resources.payloads.update_a_project_data import project_id_update, data_origin
 
 
-@pytest.fixture(scope="session")
-def setup_update_a_project():
-    token = get_token()
-
-    response = update_a_project(project_id_update, json.dumps(data_origin), token)
-
-    def teardown():
-        response = update_a_project(project_id_update, json.dumps(data_origin), token)
-
-    yield project_id_update, token, data_origin
-    teardown()
-
-
 @pytest.fixture(scope="function")
 def setup_create_project(valid_token, request):
     def create_project_with_data(data_key):
