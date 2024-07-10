@@ -1,5 +1,7 @@
 import requests
 from config import BASE_URI
+from src.todoist_api.api_request import TodoistRequest
+from src.todoist_api.endpoint import Endpoint
 
 
 def get_a_task(task_id, token):
@@ -58,11 +60,11 @@ def update_a_task(task_id, payload, token):
 
 
 def reopen_a_task(task_id, token):
-  url = f"{BASE_URI}/rest/v2/tasks/{task_id}/reopen"
+  url = f"{BASE_URI}{Endpoint.TASKS.value}/{task_id}/reopen"
   headers = {
     'Authorization': f'Bearer {token}',
   }
-  return requests.post(url, headers=headers)
+  return TodoistRequest.post(url, headers, '')
 
 
 def close_a_task(token, task_id):
