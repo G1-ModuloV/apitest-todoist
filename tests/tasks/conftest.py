@@ -109,3 +109,15 @@ def setup_create_delete_task_optional_fields(valid_task_data_optional_fields, va
 
     yield task_id
     teardown()
+
+
+@pytest.fixture(scope="session")
+def setup_get_task(valid_task_data_mandatory_field, valid_token):
+    response = create_task(valid_task_data_mandatory_field, valid_token)
+    task_id = response.json()['id']
+
+    def teardown():
+        delete_task(task_id, valid_token)
+
+    yield task_id
+    teardown()
