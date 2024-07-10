@@ -7,6 +7,7 @@ from src.assertions.projects.update_a_project_assertions import (assert_status_c
                                                                  assert_style)
 
 
+@pytest.mark.regression
 @pytest.mark.smoke
 # TD-8 Validar actualización exitosa con todos los parámetros válidos (name, color, is_favorite, view_style)
 def test_update_project_all_valid_parameters(setup_create_project, valid_token):
@@ -16,6 +17,7 @@ def test_update_project_all_valid_parameters(setup_create_project, valid_token):
     assert_cambio_de_parametros(response)
 
 
+@pytest.mark.regression
 @pytest.mark.smoke
 # TD-8 Validar actualización del proyecto con solo el parámetro name válido
 def test_update_project_name_only(setup_create_project, valid_token):
@@ -25,6 +27,7 @@ def test_update_project_name_only(setup_create_project, valid_token):
     assert_name(response)
 
 
+@pytest.mark.regression
 @pytest.mark.smoke
 # TD-8 Validar actualización del proyecto con solo el parámetro color válido
 def test_update_project_color_only(setup_create_project, valid_token):
@@ -34,6 +37,7 @@ def test_update_project_color_only(setup_create_project, valid_token):
     assert_color(response)
 
 
+@pytest.mark.regression
 @pytest.mark.smoke
 # TD-8 Validar actualización del proyecto con solo el parámetro is_favorite válido
 # NO PERMITE QUE SOLO SE CAMBIE "IS_FAVORITE", SE AGREGO UN PARAMETRO MAS "COLOR"'''
@@ -45,6 +49,7 @@ def test_update_project_is_favorite_only(setup_create_project, valid_token):
     assert_favorite(response)
 
 
+@pytest.mark.regression
 @pytest.mark.smoke
 # TD-8 Validar actualización del proyecto con solo el parámetro view_style válido
 def test_update_project_view_style_only(setup_create_project, valid_token):
@@ -54,6 +59,7 @@ def test_update_project_view_style_only(setup_create_project, valid_token):
     assert_style(response)
 
 
+@pytest.mark.regression
 @pytest.mark.smoke
 # TD-8 Verificar actualización sin ningún dato
 def test_update_project_no_data(setup_create_project, valid_token):
