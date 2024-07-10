@@ -14,7 +14,7 @@ from src.assertions.labels.rename_shared_labels_assertions import assert_rename_
 # TD-50 Verificar el cambio de nombre de una etiqueta compartida a partir de name y new_name validos, usando content-type correcto y un token valido.
 # TD-50 Verificar el cambio de nombre de una etiqueta compartida a partir de name y new_name numerico, usando content-type correcto y un token valido.
 # TD-50 Verificar el cambio de nombre de una etiqueta compartida a partir de name y new_name booleano, usando content-type correcto y un token valido.
-def test_rename_shared_labels_good_new_name(payload, valid_token, get_shared_label_id):
+def test_rename_shared_labels_good_new_name(payload, valid_token, setup_create_a_shared_label):
     response = rename_share_labels(json.dumps(payload), valid_token)
     assert_rename_share_labels_successfully(response)
     share_labels = get_all_shared_labels(valid_token).json()

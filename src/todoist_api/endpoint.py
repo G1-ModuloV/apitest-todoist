@@ -6,8 +6,5 @@ class Endpoint(Enum):
     SHARED_LABELS = "/rest/v2/labels/shared/"
     RENAME_SHARED_LABELS = "/rest/v2/labels/shared/rename"
 
-    # Comments
+    #Comments
     COMMENTS = "/rest/v2/comments"
-
-    # Tasks
-    TASKS = "/rest/v2/tasks"
