@@ -8,3 +8,6 @@ class Endpoint(Enum):
 
     #Comments
     COMMENTS = "/rest/v2/comments"
+
+    # Tasks
+    TASKS = "/rest/v2/tasks"
