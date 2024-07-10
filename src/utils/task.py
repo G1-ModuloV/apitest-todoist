@@ -5,7 +5,7 @@ from src.todoist_api.endpoint import Endpoint
 
 
 def get_a_task(task_id, token):
-    url = f"{BASE_URI}/rest/v2/tasks/{task_id}"
+    url = f"{BASE_URI}{Endpoint.TASKS.value}/{task_id}"
     headers = {
         'Authorization': f'Bearer {token}',
     }
@@ -14,7 +14,7 @@ def get_a_task(task_id, token):
 
 
 def create_task(task_data, token):
-    url = f"{BASE_URI}/rest/v2/tasks"
+    url = f"{BASE_URI}{Endpoint.TASKS.value}"
     headers = {
         'Authorization': f'Bearer {token}',
         'Content-Type': 'application/json'
@@ -23,7 +23,7 @@ def create_task(task_data, token):
 
 
 def delete_task(task_id, token):
-    url = f"{BASE_URI}/rest/v2/tasks/{task_id}"
+    url = f"{BASE_URI}{Endpoint.TASKS.value}/{task_id}"
     headers = {
         'Authorization': f'Bearer {token}',
     }
