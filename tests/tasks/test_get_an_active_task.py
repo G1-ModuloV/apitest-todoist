@@ -11,30 +11,30 @@ from src.assertions.tasks.get_an_active_task_assertions import (
 @pytest.mark.smoke
 @pytest.mark.regression
 # TD-20 Verificar que se pueda recuperar una tarea activa con un token de acceso válido
-def test_get_an_active_task(valid_task_id, valid_token):
-    response = get_a_task(valid_task_id, valid_token)
+def test_get_an_active_task(setup_create_delete_task, valid_token):
+    response = get_a_task(setup_create_delete_task, valid_token)
     assert_get_a_task_successful(response)
 
 
 @pytest.mark.smoke
 @pytest.mark.regression
 # TD-20 Verificar que se reciba el contenido de una tarea activa
-def test_get_an_active_task_schema(valid_task_id, valid_token):
-    response = get_a_task(valid_task_id, valid_token)
+def test_get_an_active_task_schema(setup_create_delete_task, valid_token):
+    response = get_a_task(setup_create_delete_task, valid_token)
     assert_get_a_task_json(response)
 
 
 @pytest.mark.regression
 # TD-20 Verificar que no se pueda recuperar una tarea activa con un token de acceso inválido
-def test_get_an_active_task_invalid_token(valid_task_id, invalid_token):
-    response = get_a_task(valid_task_id, invalid_token)
+def test_get_an_active_task_invalid_token(setup_create_delete_task, invalid_token):
+    response = get_a_task(setup_create_delete_task, invalid_token)
     assert_get_a_task_unauthorized(response)
 
 
 @pytest.mark.regression
 # TD-20 Verificar que no se pueda recuperar una tarea sin token de autenticación
-def test_get_an_active_task_no_token(valid_task_id, no_token):
-    response = get_a_task(valid_task_id, no_token)
+def test_get_an_active_task_no_token(setup_create_delete_task, no_token):
+    response = get_a_task(setup_create_delete_task, no_token)
     assert_get_a_task_unauthorized(response)
 
 
