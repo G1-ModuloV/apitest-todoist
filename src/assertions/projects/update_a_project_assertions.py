@@ -1,4 +1,5 @@
-from src.resources.payloads.update_a_project_data import new_color, new_name, new_favorite, new_style, data_origin
+from src.resources.payloads.update_a_project_data import (new_color, new_name, new_favorite, new_style,
+                                                          data_new)
 
 
 def assert_status_code(response, expected_status):
@@ -7,10 +8,10 @@ def assert_status_code(response, expected_status):
 
 def assert_cambio_de_parametros(response):
     json_response = response.json()
-    assert json_response["name"] == "Automatizar project"
-    assert json_response["color"] == "red"
-    assert json_response["is_favorite"] == False
-    assert json_response["view_style"] == "list"
+    assert json_response["name"] == data_new["name"]
+    assert json_response["color"] == data_new["color"]
+    assert json_response["is_favorite"] == data_new["is_favorite"]
+    assert json_response["view_style"] == data_new["view_style"]
 
 
 def assert_name(response):
