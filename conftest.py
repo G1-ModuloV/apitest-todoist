@@ -144,42 +144,42 @@ def valid_task_id_3():
 
 
 @pytest.fixture
-def valid_task_payload1():
+def valid_task_payl1():
     return "{\"content\": \"Tarea 6 actualizar-100\"}"
 
 
 @pytest.fixture
-def valid_task_payload2():
+def valid_task_payl2():
     return "{\"description\": \"actualizando continuamente - 200\"}"
 
 
 @pytest.fixture
-def valid_task_payload3():
+def valid_task_payl3():
     return "{\"priority\": 1}"
 
 
 @pytest.fixture
-def valid_task_payload4():
+def valid_task_payl4():
     return "{\"labels\": [\"automa_00\",\"test850\"]}"
 
 
 @pytest.fixture
-def valid_task_payload5():
+def valid_task_payl5():
     return "{\"due_date\": \"2024-06-29\"}"
 
 
 @pytest.fixture
-def valid_task_payload6():
+def valid_task_payl6():
     return "{\"content\": \"8*/*98*9\"}"
 
 
 @pytest.fixture
-def valid_task_payload7():
+def valid_task_payl7():
     return "{\"description\": \"//*+6-.'?\"}"
 
 
 @pytest.fixture
-def valid_task_payload8():
+def valid_task_payl8():
     return "{\"due_date\": \"1909-06-30\"}"
 
 
